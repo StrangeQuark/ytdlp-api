@@ -1,0 +1,15 @@
+services:
+  youtube-downloader-api:
+    build: .
+    networks:
+      - shared-network
+    container_name: youtube-downloader-api
+    ports:
+      - "7000:7000"
+    volumes:
+      - ./audio:/app/audio
+      - ./videos:/app/videos
+    restart: unless-stopped
+networks:
+  shared-network:
+    external: true
